@@ -1,0 +1,15 @@
+#!/usr/bin/env rc
+fn is_git_repo {
+	git rev-parse --is-inside-work-tree >/dev/null >[2]/dev/null
+}
+
+fn filelist {
+	if(is_git_repo) {
+		git ls-files --exclude-standard -o -c | xargs ls -d >[2]/dev/null
+	}
+	if not {
+		find . -type f
+	}
+}
+
+filelist | xargs grep --color $"*
