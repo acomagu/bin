@@ -1,0 +1,2 @@
+#!/usr/bin/env rc
+nvc ex cd `{realpath $*}
