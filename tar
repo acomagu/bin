@@ -1,0 +1,3 @@
+#!/usr/bin/env rc
+# https://blog.3qe.us/entry/pax-nominis
+tar -H pax $"*

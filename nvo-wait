@@ -1,0 +1,14 @@
+#!/usr/bin/env rc
+if(9 test -d $*) {
+	9 echo -n 'It''s directory. Sure? '
+	if(! ~ `{9 read} y) {
+		exit
+	}
+}
+
+nvc ex e `{realpath $*}
+bufnr=`{$"home/.local/bin/nvc ex lua 'print(vim.fn.bufnr(''%''))'}
+while (~ `{$home/.local/bin/nvc ex lua 'print(vim.api.nvim_buf_is_loaded('$"bufnr'))'} true) {
+	sleep 1
+}
+true
